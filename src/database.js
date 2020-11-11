@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const MONGODB_URI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@dicweb.ihkbp.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
+const MONGODB_URI = `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASS}@bwl9ydlhmxufsmx-mongodb.services.clever-cloud.com:27017/${process.env.DB_NAME}`
 
 mongoose.connect(MONGODB_URI,{
     useNewUrlParser:true,
