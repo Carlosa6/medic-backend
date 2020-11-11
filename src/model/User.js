@@ -32,6 +32,10 @@ const userSchema = new Schema({
     rol: [{
         ref: "Rol",
         type: Schema.Types.ObjectId
+    }],
+    fichaMedica:[{
+        ref: "FichaMedica",
+        type: Schema.Types.ObjectId
     }]
 }, {
     timestamps: true

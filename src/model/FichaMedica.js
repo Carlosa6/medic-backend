@@ -17,10 +17,9 @@ const fichaSchema = new Schema({
     },
     medicamentoHabitual: [medicamentoHabitualSchema],
     medicamentosAlergicos:[String], //["","",""]
-    seguroMedico:[{                                 //TODO: ANALIZAR
-        ref:"SeguroMedico",
-        type: String
-    }]
+    seguroMedico:{                                 //TODO: ANALIZAR
+        ref:"SeguroMedico"
+    }
 },{
     timestamps:true //fecha de creación y actualización
 })
