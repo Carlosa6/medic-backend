@@ -10,7 +10,7 @@ const medicamentoHabitualSchema = new Schema({
 })
 
 const fichaSchema = new Schema({
-    diagnostico: String,
+    diagnostico: [String],
     tipoSangre: { //almacenará el _id del tipo de sangre correspondiente al usuario
         ref:"TipoSangre",
         type: Schema.Types.ObjectId
