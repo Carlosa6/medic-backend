@@ -1,5 +1,6 @@
 const Rol = require('../model/Rol');
 const User = require('../model/User')
+const jwt = require('jsonwebtoken')
 
 const createUser = async (req, res) => {
     const { codigo, nombres, apellidos, dni, email, password, direccion, telefono, rol } = req.body
@@ -13,11 +14,7 @@ const createUser = async (req, res) => {
     //para obtener su id y guardarlos en el esquema de usuarios
     if (rol) {
         const foundRol = await Rol.findOne({ name: rol })
-        if (foundRol) {
-            newUser.rol = foundRol._id;
-        } else {
-            return res.status(400).json({ error: true, message: `El rol ${rol} no es válido` })
-        }
+        newUser.rol = foundRol._id;
     } else {
         //si no se le asigna un rol
         //asignar el rol de "user"
@@ -28,7 +25,14 @@ const createUser = async (req, res) => {
     //guardar el usuario en la bd
     const savedUser = await newUser.save();
     console.log(savedUser)
-    res.status(200).json({ error: false, user: savedUser })
+
+    const secret = process.env.SECRET
+    //creación de token
+    const token = jwt.sign({id:savedUser._id},secret,{
+        expiresIn:86400
+    })
+    //devolver el token
+    res.status(200).json({ error: false, token })
 }
 
 const getUsers = async (req, res) => {

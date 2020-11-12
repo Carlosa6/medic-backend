@@ -1,5 +1,4 @@
 const { ROLES } = require('../libs/generals')
-const Rol = require('../model/Rol')
 const User = require('../model/User')
 
 //MIDDLEWARE QUE VERIFICA EL CORREO,CÓDIGO Y DNI DEL NUEVO USUARIO. EMAIL,DNI Y CÓDIGO ÚNICO
@@ -23,19 +22,16 @@ const checkDuplicado = async (req, res, next) => {
     next()
 }
 
-//MIDDLEWARE QUE VERIFICA QUE EL USUARIO TIENE EL ROL DE ADMIN
-const isAdmin = async (req, res, next) => {
-    const user = await User.findById(req.usuario._id)
-    const rol = await Rol.findById(user.rol)
-
-    if (rol.name === "admin") {
-        next();
-        return;
+//MIDDLEWARE QUE VERIFICA EL ROL QUE SE ASIGNA EL USUARIO
+const verificarRol = (req,res,next) => {
+    if(req.body.rol){
+        if(!ROLES.includes(req.body.rol)){
+            return res.status(400).json({error:true,message:`El rol ${req.body.rol} no existe`})
+        }
     }
-
-    return res.status(403).json({ message: 'Sólo el Administrador puede realizar esta operación' })
+    next();
 }
 
 module.exports = {
-    checkDuplicado, isAdmin
+    checkDuplicado,verificarRol
 }

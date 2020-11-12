@@ -1,7 +1,7 @@
 const User = require("../model/User")
+const jwt = require('jsonwebtoken')
 
 const authSignin = async (req, res) => {
-
 
     const userFound = await User.findOne({ email: req.body.email }).populate("rol")
 
@@ -11,9 +11,12 @@ const authSignin = async (req, res) => {
 
     if (!validPassword) return res.status(401).json({ error: true, message: "La contraseña es incorrecta" })
 
-    req.usuario = userFound
+    const secret = process.env.SECRET
+    const token = jwt.sign({id:userFound._id}, secret,{
+        expiresIn:86400
+    })
 
-    res.status(200).json({ user: req.usuario })
+    res.json({token})
 
 }
 
