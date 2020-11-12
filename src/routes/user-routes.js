@@ -1,8 +1,10 @@
 const { Router } = require('express')
 const userCtrl = require('../controllers/user-controller')
 const { body } = require('express-validator')
+const config = require('../config/verificacion')
 const router = Router()
 
+//crear usuarios => POST /api/users 
 router.post('/', [
     body('codigo').not().isEmpty().isLength({ max: 8 }),
     body('nombres').not().isEmpty().trim().escape(),
@@ -12,6 +14,9 @@ router.post('/', [
     body('password').not().isEmpty().isLength({min:6}),
     body('direccion').trim().escape(),
     body('telefono').isLength({max:9})
-], userCtrl.createUser)
+], config.checkDuplicado,userCtrl.createUser)
+
+//listar usuarios => GET /api/users
+router.get('/', userCtrl.getUsers)
 
 module.exports = router

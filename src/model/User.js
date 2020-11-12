@@ -49,8 +49,8 @@ userSchema.statics.encryptPassword = async (password) => {
 }
 
 //comparar contraseña de la bd y la que se recibe desde el req.body
-userSchema.statics.comparePassword = async (password, receivePassword) => {
-    return await bcrypt.compare(password, receivePassword)
+userSchema.statics.comparePassword = async function(password,verif){
+    return await bcrypt.compare(password, verif)
 }
 
 module.exports = model('User', userSchema)

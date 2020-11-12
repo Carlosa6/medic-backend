@@ -5,13 +5,25 @@ POST {{api}}
 Content-Type: application/json
 
 {
-    "codigo":"16200083",
-    "nombres":"Marlon Christophe",
-    "apellidos":"Padberg Johns",
-    "dni":"74950934",
-    "email":"marlon.padberg@unmsm.edu.pe",
-    "password":"elpadj93",
-    "direccion":"7732 Jameson Mission",
-    "telefono":"908465934"
+    "codigo":"80826341",
+    "nombres":"Unidad Bienestar",
+    "apellidos":"Olson Dooley",
+    "dni":"74630482",
+    "email":"unidad.bienestar20@unmsm.edu.pe",
+    "password":"bienestaru",
+    "direccion":"25732 Bartell Creek",
+    "telefono":"983692102",
+    "rol":"admin"
 }
 
+### LISTAR USUARIOS
+GET {{api}}
+
+### LOGIN
+POST http://localhost:4000/api/auth/signin
+Content-Type: application/json
+
+{
+    "email":"unidad.bienestar20@unmsm.edu.pe",
+    "password":"bienestaru"
+}
