@@ -1,0 +1,17 @@
+@api = http://localhost:4000/api/users
+
+### CREAR USUARIO
+POST {{api}}
+Content-Type: application/json
+
+{
+    "codigo":"16200083",
+    "nombres":"Marlon Christophe",
+    "apellidos":"Padberg Johns",
+    "dni":"74950934",
+    "email":"marlon.padberg@unmsm.edu.pe",
+    "password":"elpadj93",
+    "direccion":"7732 Jameson Mission",
+    "telefono":"908465934"
+}
+

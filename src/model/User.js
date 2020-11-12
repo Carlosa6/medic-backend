@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose')
+const bcrypt = require('bcryptjs')
 
 const userSchema = new Schema({
     codigo: {
@@ -29,10 +30,10 @@ const userSchema = new Schema({
     direccion: String,
     telefono: String,
     foto: String,
-    rol: [{
+    rol: {
         ref: "Rol",
         type: Schema.Types.ObjectId
-    }],
+    },
     fichaMedica:[{
         ref: "FichaMedica",
         type: Schema.Types.ObjectId
