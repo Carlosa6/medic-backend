@@ -3,17 +3,14 @@ const express = require('express')
 const cors = require('cors')
 const morgan = require('morgan')
 const app = express()
-const {creacionRoles,creacionTipoSangre} = require('./libs/initialSetup');
 
 const userRoutes = require('./routes/user-routes')
 const authRoutes = require('./routes/auth-routes')
+const fichaMedicaRouter = require('./routes/medica-routes')
 
 
 //db
 require('./database')
-//ejecutar la función que crea los roles
-creacionRoles();
-creacionTipoSangre();
 
 const port = process.env.PORT || 4000
 
@@ -24,5 +21,6 @@ app.use(express.json())
 //rutas
 app.use('/api/users', userRoutes)
 app.use('/api/auth',authRoutes)
+app.use('/api/medic',fichaMedicaRouter)
 
 app.listen(port, () => console.log('Server on port',port))

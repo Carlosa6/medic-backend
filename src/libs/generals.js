@@ -8,12 +8,8 @@ module.exports = {
         "Bnegativo","Bpositivo",
         "ABnegativo","ABpositivo"
     ],
-    SEGURO_MEDICO:{
-        PUBLICO:[
-            "SIS","EsSalud","Fuerzas Armadas","Policia"
-        ],
-        EPS:[
-            "Rimac", "Mapfre", "Sanitas", "Pacifico"
-        ]
-    }
+    SEGURO_MEDICO:[
+        "SIS","EsSalud","Fuerzas Armadas","Policia",
+        "Rimac", "Mapfre", "Sanitas", "Pacifico"
+    ]
 }
