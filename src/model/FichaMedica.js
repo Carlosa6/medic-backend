@@ -9,6 +9,21 @@ const medicamentoHabitualSchema = new Schema({
     periodo: String //ejm: por día
 })
 
+const seguroMedicoSchema = new Schema({
+    UNMSM:{
+        type:Boolean
+    },
+    MINSA:{
+        type:Boolean
+    },
+    ESSALUD:{
+        type:Boolean
+    },
+    EPS:[ //PÚBLICO O PRIVADO
+        String //SEGÚN EL TIPO, ALMACENA EL CORRESPONDIENTE: SIS, EsSalud, Rimac,etc
+    ]
+})
+
 const fichaSchema = new Schema({
     diagnostico: [String],
     tipoSangre: { //almacenará el _id del tipo de sangre correspondiente al usuario
@@ -17,9 +32,14 @@ const fichaSchema = new Schema({
     },
     medicamentoHabitual: [medicamentoHabitualSchema],
     medicamentosAlergicos:[String], //["","",""]
-    seguroMedico:{                                 //TODO: ANALIZAR
+    /*seguroMedico:{                                 //TODO: ANALIZAR
         ref:"SeguroMedico"
+    }*/
+    seguroMedico:{seguroMedicoSchema},
+    anio:{
+        type:Number
     }
+    
 },{
     timestamps:true //fecha de creación y actualización
 })

@@ -1,7 +1,8 @@
 const { Schema, model } = require('mongoose')
 
 const tipoSangreSchema = new Schema({
-    tipo:String
+    tipo:String,
+    representaion:String,
 },{
     versionKey:false
 })

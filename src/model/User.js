@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose')
-const bcrypt = require('bcryptjs')
 
 const userSchema = new Schema({
     codigo: {
@@ -30,10 +29,10 @@ const userSchema = new Schema({
     direccion: String,
     telefono: String,
     foto: String,
-    rol: {
+    rol: [{
         ref: "Rol",
         type: Schema.Types.ObjectId
-    },
+    }],
     fichaMedica:[{
         ref: "FichaMedica",
         type: Schema.Types.ObjectId
@@ -49,8 +48,8 @@ userSchema.statics.encryptPassword = async (password) => {
 }
 
 //comparar contraseña de la bd y la que se recibe desde el req.body
-userSchema.statics.comparePassword = async function(password,verif){
-    return await bcrypt.compare(password, verif)
+userSchema.statics.comparePassword = async (password, receivePassword) => {
+    return await bcrypt.compare(password, receivePassword)
 }
 
 module.exports = model('User', userSchema)
