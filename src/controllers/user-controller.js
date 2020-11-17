@@ -32,7 +32,7 @@ const createUser = async (req, res) => {
         expiresIn:86400
     })
     //devolver el token
-    res.status(200).json({ error: false, token })
+    res.status(200).json({ error: false, message:'El usuario ['+nombres.uppercase()+'] fue creado correctamente'})
 }
 
 const getUsers = async (req, res) => {
