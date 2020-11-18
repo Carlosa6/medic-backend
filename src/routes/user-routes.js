@@ -19,4 +19,7 @@ router.post('/', [
 //listar usuarios => GET /api/users
 router.get('/', userCtrl.getUsers)
 
+//listar info de un usuario por codigo
+router.get('/:dniuser',userCtrl.getUserByCodigo)
+
 module.exports = router
