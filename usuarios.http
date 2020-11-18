@@ -19,7 +19,7 @@ Content-Type: application/json
 GET {{api}}
 
 ### BUSCAR USUARIO POR DNI
-GET http://localhost:4000/api/users/50231094
+GET http://localhost:4000/api/users/06382891
 
 ### LOGIN
 POST http://localhost:4000/api/auth/signin

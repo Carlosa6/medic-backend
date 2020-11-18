@@ -45,7 +45,7 @@ const getUsers = async (req, res) => {
 }
 
 const getUserByCodigo = async (req,res) => {
-    const user = await User.findOne({dni:req.params.dniuser})
+    const user = await User.findOne({dni:req.params.dniuser}).populate('rol').populate('fichaMedica')
 
     if(!user){
         return res.status(404).json({error:true,message:"No existe el usuario"})
