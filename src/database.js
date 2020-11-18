@@ -4,7 +4,8 @@ const MONGODB_URI = `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASS}
 
 mongoose.connect(MONGODB_URI,{
     useNewUrlParser:true,
-    useUnifiedTopology:true
+    useUnifiedTopology:true,
+    useCreateIndex:true
 })
 .then(() => console.log('DB is connected'))
 .catch(err => console.log('error',err))
