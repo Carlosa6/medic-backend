@@ -23,12 +23,12 @@ app.use(morgan('dev'))
 app.use(cors(corOptions))
 app.use(express.json())
 
-/*app.all('/*',function(req,res,next){
+app.all('/*',function(req,res,next){
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Cache-Control");
     next()
 
-})*/
+})
 
 //rutas
 app.use('/api/users', cors(corOptions), userRoutes)
