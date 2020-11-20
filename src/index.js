@@ -15,13 +15,20 @@ require('./database')
 const port = process.env.PORT || 4000
 const corOptions = {
     credentials: true,
-    origin: true,
+    origin: "*",
     optionsSuccessStatus: 200
 }
 
 app.use(morgan('dev'))
 app.use(cors(corOptions))
 app.use(express.json())
+
+/*app.all('/*',function(req,res,next){
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Cache-Control");
+    next()
+
+})*/
 
 //rutas
 app.use('/api/users', cors(corOptions), userRoutes)
