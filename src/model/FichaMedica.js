@@ -35,7 +35,7 @@ const fichaSchema = new Schema({
     /*seguroMedico:{                                 //TODO: ANALIZAR
         ref:"SeguroMedico"
     }*/
-    seguroMedico:{seguroMedicoSchema},
+    seguroMedico:seguroMedicoSchema,
     anio:{
         type:Number
     }

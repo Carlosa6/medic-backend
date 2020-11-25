@@ -20,7 +20,7 @@ const createFichaMedica = async (req, res) => {
     seguroMedico,
     anio
   });
-
+  console.log(seguroMedico)
   const fm = await newFM.save()
   const usuario = await User.findOne({email})
   usuario.fichaMedica.push(fm._id)
