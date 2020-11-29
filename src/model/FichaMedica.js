@@ -19,9 +19,9 @@ const seguroMedicoSchema = new Schema({
     ESSALUD:{
         type:Boolean
     },
-    EPS:[ //PÚBLICO O PRIVADO
-        String //SEGÚN EL TIPO, ALMACENA EL CORRESPONDIENTE: SIS, EsSalud, Rimac,etc
-    ]
+    EPS:String    //PÚBLICO O PRIVADO
+        //SEGÚN EL TIPO, ALMACENA EL CORRESPONDIENTE: SIS, EsSalud, Rimac,etc
+    
 })
 
 const fichaSchema = new Schema({
