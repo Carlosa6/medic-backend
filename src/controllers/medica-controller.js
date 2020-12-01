@@ -22,11 +22,22 @@ const createFichaMedica = async (req, res) => {
   });
   console.log(seguroMedico)
   const fm = await newFM.save()
-  const usuario = await User.findOne({email})
+  const usuario = await User.findOne({ email })
   usuario.fichaMedica.push(fm._id)
   const savedUsuario = await usuario.save()
-  
-  res.status(200).json({ error: false, message:'La ficha medica fue creada correctamente',savedUsuario})
+
+  res.status(200).json({ error: false, message: 'La ficha medica fue creada correctamente', savedUsuario })
 };
 
-module.exports = { createFichaMedica };
+const listarFichaMedicaxUsuario = async (req, res) => {
+  const usuario = await User.findOne({ codigo: req.params.usuario }).populate('fichaMedica')
+
+  if (!usuario) {
+    return res.status(400).json({ error: true, message: "El código del usuario no existe" });
+  } else {
+    return res.status(200).json({ error: false, usuario });
+  }
+
+}
+
+module.exports = { createFichaMedica,listarFichaMedicaxUsuario };

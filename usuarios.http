@@ -29,3 +29,6 @@ Content-Type: application/json
     "email":"unidad.bienestar20@unmsm.edu.pe",
     "password":"bienestaru"
 }
+
+### get ficha medica por codigo de usuario
+GET http://localhost:4000/api/medic/18200073

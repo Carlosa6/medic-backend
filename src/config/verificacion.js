@@ -1,4 +1,4 @@
-const { ROLES } = require('../libs/generals')
+const { ROLES, TIPO_SANGRE } = require('../libs/generals')
 const User = require('../model/User')
 
 //MIDDLEWARE QUE VERIFICA EL CORREO,CÓDIGO Y DNI DEL NUEVO USUARIO. EMAIL,DNI Y CÓDIGO ÚNICO
@@ -23,15 +23,24 @@ const checkDuplicado = async (req, res, next) => {
 }
 
 //MIDDLEWARE QUE VERIFICA EL ROL QUE SE ASIGNA EL USUARIO
-const verificarRol = (req,res,next) => {
-    if(req.body.rol){
-        if(!ROLES.includes(req.body.rol)){
-            return res.status(400).json({error:true,message:`El rol ${req.body.rol} no existe`})
+const verificarRol = (req, res, next) => {
+    if (req.body.rol) {
+        if (!ROLES.includes(req.body.rol)) {
+            return res.status(400).json({ error: true, message: `El rol ${req.body.rol} no existe` })
+        }
+    }
+    next();
+}
+
+const validacionTipoSangre = (req, res, next) => {
+    if (req.body.tipoSangre) {
+        if (!TIPO_SANGRE.includes(req.body.tipoSangre)) {
+            return res.status(400).json({ error: true, message: `El tipo de sangre ${req.body.tipoSangre} no es válido` })
         }
     }
     next();
 }
 
 module.exports = {
-    checkDuplicado,verificarRol
+    checkDuplicado, verificarRol,validacionTipoSangre
 }
