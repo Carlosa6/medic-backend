@@ -11,6 +11,8 @@ router.post('/',[
     body('anio').isNumeric()
 ] , medicCtrl.createFichaMedica)
 
-router.get('/:usuario', medicCtrl.listarFichaMedicaxUsuario)
+router.get('/usuario/:usuario', medicCtrl.listarFichaMedicaxUsuario)
+
+router.get('/:id', medicCtrl.mostrarFichaxId)
 
 module.exports = router

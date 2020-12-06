@@ -40,4 +40,17 @@ const listarFichaMedicaxUsuario = async (req, res) => {
 
 }
 
-module.exports = { createFichaMedica,listarFichaMedicaxUsuario };
+const mostrarFichaxId = async (req,res) => {
+  if(!req.params.id){
+    return res.status(400).json({message:"Debe proporcionar el id de la ficha médica"})
+  }else{
+    const ficha = await FichaMedica.findById(req.params.id)
+    if(!ficha){
+      return res.status(400).json({message:"El ID proporcionado no es válido"})
+    }else{
+      return res.status(200).json({ficha})
+    }
+  }
+}
+
+module.exports = { createFichaMedica,listarFichaMedicaxUsuario,mostrarFichaxId };

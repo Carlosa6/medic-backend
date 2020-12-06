@@ -32,3 +32,6 @@ Content-Type: application/json
 
 ### get ficha medica por codigo de usuario
 GET http://localhost:4000/api/medic/18200073
+
+### get ficha medica por id
+GET http://localhost:4000/api/medic/5fb4a04e6ccb72517c70e1e4
