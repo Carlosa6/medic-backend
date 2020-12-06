@@ -35,3 +35,20 @@ GET http://localhost:4000/api/medic/18200073
 
 ### get ficha medica por id
 GET http://localhost:4000/api/medic/5fb4a04e6ccb72517c70e1e4
+
+
+###
+POST http://localhost:4000/api/users
+Content-Type: application/json
+
+{
+    "email":"unidad.d3ds3434fd@unmsm.edu.pe",
+    "password":"bienestaru",
+    "nombres":"fdfgv",
+    "apellidos":"Malazquez",
+    "codigo":"13489093",
+    "dni":"78700932",
+    "direccion":"dsdds",
+    "telefono":"909984321"
+}
+
