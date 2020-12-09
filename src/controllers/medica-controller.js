@@ -1,5 +1,6 @@
 const FichaMedica = require("../model/FichaMedica");
 const User = require("../model/User");
+const TipoSangre = require('../model/TipoSangre')
 
 const createFichaMedica = async (req, res) => {
   const {
@@ -30,12 +31,13 @@ const createFichaMedica = async (req, res) => {
 };
 
 const listarFichaMedicaxUsuario = async (req, res) => {
-  const usuario = await User.findOne({ codigo: req.params.usuario }).populate('fichaMedica')
+  const usuario = await User.findOne({ codigo: req.params.usuario }).populate('fichaMedica').populate('rol')
 
   if (!usuario) {
     return res.status(400).json({ error: true, message: "El código del usuario no existe" });
   } else {
-    return res.status(200).json({ error: false, usuario });
+    const findTipoSangre = await TipoSangre.findById(usuario.tipoSangre)
+    return res.status(200).json({ error: false, usuario,tipoSangre:findTipoSangre });
   }
 
 }
