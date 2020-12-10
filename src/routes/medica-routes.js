@@ -2,17 +2,27 @@ const {Router} = require('express')
 const medicCtrl = require('../controllers/medica-controller')
 const validacion = require('../config/verificacion')
 const {body} = require('express-validator')
+const auth = require('../helpers/autenticacion')
 
 const router = Router()
 
-//crear ficha médica => /api/medic
+//crear ficha médica => /api/medic. Sólo el admin puede crear ficha médica
 router.post('/',[
     validacion.validacionTipoSangre,
     body('anio').isNumeric()
-] , medicCtrl.createFichaMedica)
+] ,[
+    auth.verificarToken,
+    auth.isAdmin
+], medicCtrl.createFichaMedica)
 
-router.get('/usuario/:usuario', medicCtrl.listarFichaMedicaxUsuario)
+//MOsttrar la ficha médica por usuario. Validar el token
+router.get('/usuario/:usuario',[
+    auth.verificarToken
+], medicCtrl.listarFichaMedicaxUsuario)
 
-router.get('/:id', medicCtrl.mostrarFichaxId)
+//mostrar ficha médica por id. Validar el token
+router.get('/:id',[
+    auth.verificarToken
+], medicCtrl.mostrarFichaxId)
 
 module.exports = router
