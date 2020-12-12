@@ -16,18 +16,22 @@ Content-Type: application/json
 }
 
 ### LISTAR USUARIOS
-GET {{api}}
+
+GET http://localhost:4000/api/users
+access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYWNhNGFhMzlhYmFkM2MzYzlhYzhjZiIsImlhdCI6MTYwNzc0NzA4MiwiZXhwIjoxNjA3ODMzNDgyfQ.OpSqgOllm8XdXK7aXy8ZHsOhlLsA0_9tAs5ZC2nu8oc
+
 
 ### BUSCAR USUARIO POR DNI
 GET http://localhost:4000/api/users/06382891
 
+
 ### LOGIN
-POST http://localhost:4000/api/auth/signin
+POST https://nameless-plains-49486.herokuapp.com/api/auth/signin
 Content-Type: application/json
 
 {
-    "email":"unidad.bienestar20@unmsm.edu.pe",
-    "password":"bienestaru"
+    "email":"andres.paredes2@unmsm.edu.pe",
+    "password":"andres23"
 }
 
 ### get ficha medica por codigo de usuario

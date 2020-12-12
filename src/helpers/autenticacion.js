@@ -1,9 +1,11 @@
 const jwt = require('jsonwebtoken')
 const User = require('../model/User')
+const Rol = require('../model/Rol')
 
 const verificarToken = async (req,res,next) => {
     try {
-        const token = req.header['access-token'] //obtener el token por cabecera
+        const token = req.header('access-token') //obtener el token por cabecera
+        console.log(token)
         //si no existe el token
         if(!token) return res.status(403).json({error:true,message:"Fallo al encontrar el token! Acceso Denegado!"})
         
