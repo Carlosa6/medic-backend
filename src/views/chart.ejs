@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart.js Estadísticas Medic</title>
+    <style>
+        body{
+            padding:0;
+            margin:0;
+        }
+        h1{
+            text-align: center;
+            font-size: 30px;
+            margin:20px auto;
+        }
+        h3{
+            text-align: center;
+            margin: 10px auto;
+            color: brown;
+        }
+        .charts{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90vw;
+            padding: 40px;
+        }
+        .chartsito{
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            border:1px solid #d8b22c;
+            width: 100vw;
+            height: 70vh;
+            margin:0 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Estadísticas Sistema de Administración Médica</h1>
+    <div class="charts">
+        <div class="chartsito">
+            <h3>Cantidad de usuarios por tipo de sangre</h3>
+            <canvas id="chart1" height="350"></canvas>
+        </div>
+        <div class="chartsito">
+            <h3>Cantidad de usuarios por seguro médico</h3>
+            <canvas id="chart2" height="350"></canvas>
+        </div>
+    </div>
+
+    <!-- CHART.JS CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.min.js" integrity="sha512-SuxO9djzjML6b9w9/I07IWnLnQhgyYVSpHZx0JV97kGBfTIsUYlWflyuW4ypnvhBrslz1yJ3R+S14fdCWmSmSA==" crossorigin="anonymous"></script>
+
+    <script>
+        const chart1 = document.getElementById('chart1')
+        const chart2 = document.getElementById('chart2')
+
+        const datos1 = JSON.parse('<%- data1 %>')
+        const label1 = JSON.parse('<%- label1 %>')
+        const datos2 = JSON.parse('<%- data2 %>')
+        const label2 = JSON.parse('<%- label2 %>')
+
+        const graphic1 = new Chart(chart1,{
+            type:'bar',
+            data:{
+                labels:label1,
+                datasets:[{
+                    label:"Cantidad de Usuarios",
+                    data:datos1,
+                    borderColor:'black',
+                    backgroundColor:[
+                    'orange',
+                    'skyblue',
+                    'purple',
+                    'peru',
+                    'yellow',
+                    'lightgreen',
+                    'red',
+                    'gray'
+                    ]
+                }]
+            }
+        })
+
+        const graphic2 = new Chart(chart2,{
+            type:'horizontalBar',
+            data:{
+                labels:label2,
+                datasets:[{
+                    label:"Usuarios según el Seguro Médico",
+                    data:datos2,
+                    backgroundColor:'lightgreen'
+                }]
+            }
+        })
+    </script>
+
+</body>
+</html>

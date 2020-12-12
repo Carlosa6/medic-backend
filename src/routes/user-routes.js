@@ -2,7 +2,7 @@ const { Router } = require('express')
 const userCtrl = require('../controllers/user-controller')
 const { body } = require('express-validator')
 const config = require('../config/verificacion')
-const auth = rwquire('../helpers/autenticacion')
+const auth = require('../helpers/autenticacion')
 const router = Router()
 
 //crear usuarios => POST /api/users. Sólo el admin puede crear usuarios 

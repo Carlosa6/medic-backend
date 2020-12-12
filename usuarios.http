@@ -52,3 +52,7 @@ Content-Type: application/json
     "telefono":"909984321"
 }
 
+### ESTADÍSTICAS
+
+
+GET http://localhost:4000/api/charts/tipo-de-sangre
