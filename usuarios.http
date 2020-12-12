@@ -17,8 +17,8 @@ Content-Type: application/json
 
 ### LISTAR USUARIOS
 
-GET http://localhost:4000/api/users
-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYWNhNGFhMzlhYmFkM2MzYzlhYzhjZiIsImlhdCI6MTYwNzc0NzA4MiwiZXhwIjoxNjA3ODMzNDgyfQ.OpSqgOllm8XdXK7aXy8ZHsOhlLsA0_9tAs5ZC2nu8oc
+GET https://nameless-plains-49486.herokuapp.com/api/users
+access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmZDE3MzQwNjU2ODgyMDAxMDM3MDMyNCIsImlhdCI6MTYwNzc0OTM5OSwiZXhwIjoxNjA3ODM1Nzk5fQ.qzCkT5bYPaiKe0VvoX_7d36Rczk5Sm8c4hwB4eJO5nU
 
 
 ### BUSCAR USUARIO POR DNI

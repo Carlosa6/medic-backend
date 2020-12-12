@@ -26,7 +26,7 @@ router.get('/',[
     auth.isAdmin
 ], userCtrl.getUsers)
 
-//listar info de un usuario por codigo. Usuario logueado
+//listar info de un usuario por dni. Usuario logueado
 router.get('/:dniuser',[
     auth.verificarToken
 ],userCtrl.getUserByCodigo)

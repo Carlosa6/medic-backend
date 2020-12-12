@@ -40,6 +40,6 @@ app.use('/api/users', cors(corOptions), userRoutes)
 app.use('/api/auth', cors(corOptions), authRoutes)
 app.use('/api/medic', cors(corOptions), fichaMedicaRouter)
 app.use('/api/tipo-sangre', cors(corOptions), tipoSangreRouter)
-app.use('/api/charts', estadisticasRouter)
+app.use('/api/charts',cors(corOptions), estadisticasRouter)
 
 app.listen(port, () => console.log('Server on port', port))

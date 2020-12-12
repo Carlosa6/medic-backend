@@ -7,7 +7,7 @@ exports.nuevoTipoSangre = async (req, res) => {
     //validar que representation no exista en la BD
     const representationFound = await TipoSangre.findOne({ representation })
 
-    if (representationFound) return res.status(400).json({ error: true, message: 'El Tipo de Sangre ' + tipo + ' con la representación [' + representation + '] ya existe' })
+    if (representationFound) return res.status(400).json({ error: true, message: 'El Tipo de Sangre ' + tipo + ' con la representación [' + representation + '] ya existe en el sistema' })
 
     const newTipoSangre = new TipoSangre({ tipo, representation });
     await newTipoSangre.save();
@@ -38,5 +38,5 @@ exports.actualizarTipoSangrePorId = async (req, res) => {
 //eliminar un tipo de sangre por id
 exports.eliminarTipoSangre = async (req, res) => {
     await TipoSangre.findByIdAndDelete(req.params.id)
-    res.status(204).json({message:"Tipo de Sangre eliminado correctamente"})
+    res.status(204).json({message:"El Tipo de Sangre fue eliminado correctamente"})
 }

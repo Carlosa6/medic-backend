@@ -15,13 +15,18 @@ const createFichaMedica = async (req, res) => {
 
   const newFM = new FichaMedica({
     diagnostico,
-    tipoSangre,
     medicamentoHabitual,
     medicamentosAlergicos,
     seguroMedico,
     anio
   });
-  console.log(seguroMedico)
+
+  const idTipoSangre = await TipoSangre.findOne({representation:tipoSangre})
+
+  if(!idTipoSangre) return res.status(400).json({message:"El tipo de sangre seleccionado no es válido"})
+
+  newFM.tipoSangre = idTipoSangre._id
+
   const fm = await newFM.save()
   const usuario = await User.findOne({ email })
   usuario.fichaMedica.push(fm._id)
@@ -34,7 +39,7 @@ const listarFichaMedicaxUsuario = async (req, res) => {
   const usuario = await User.findOne({ codigo: req.params.usuario }).populate('fichaMedica').populate('rol')
 
   if (!usuario) {
-    return res.status(400).json({ error: true, message: "El código del usuario no existe" });
+    return res.status(400).json({ error: true, message: `El código ${req.params.usuario} no existe en el sistema` });
   } else {
     const findTipoSangre = await TipoSangre.findById(usuario.tipoSangre)
     return res.status(200).json({ error: false, usuario,tipoSangre:findTipoSangre });
@@ -44,7 +49,7 @@ const listarFichaMedicaxUsuario = async (req, res) => {
 
 const mostrarFichaxId = async (req,res) => {
   if(!req.params.id){
-    return res.status(400).json({message:"Debe proporcionar el id de la ficha médica"})
+    return res.status(400).json({message:"Fallo al encontrar el ID de la Ficha Médica! Acceso Denegado!"})
   }else{
     const ficha = await FichaMedica.findById(req.params.id)
     if(!ficha){

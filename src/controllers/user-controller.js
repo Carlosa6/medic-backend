@@ -28,11 +28,11 @@ const createUser = async (req, res) => {
 
     const secret = process.env.SECRET
     //creación de token
-    const token = jwt.sign({id:savedUser._id},secret,{
-        expiresIn:86400
+    const token = jwt.sign({ id: savedUser._id }, secret, {
+        expiresIn: 86400
     })
     //devolver el token
-    res.status(200).json({ error: false, message:'El usuario '+nombres+' fue creado correctamente'})
+    res.status(200).json({ error: false, message: 'El usuario ' + nombres + ' fue creado correctamente' })
 }
 
 const getUsers = async (req, res) => {
@@ -40,21 +40,21 @@ const getUsers = async (req, res) => {
     if (users) {
         res.status(200).json({ error: false, users })
     } else {
-        return res.status(400).json({ error: true, message: "No hay usuarios" })
+        return res.status(400).json({ error: true, message: "No hay usuarios registrados en el sistema" })
     }
 }
 
-const getUserByCodigo = async (req,res) => {
-    const user = await User.findOne({dni:req.params.dniuser}).populate('rol').populate('fichaMedica')
+const getUserByCodigo = async (req, res) => {
+    const user = await User.findOne({ dni: req.params.dniuser }).populate('rol').populate('fichaMedica')
 
-    if(!user){
-        return res.status(404).json({error:true,message:"No existe el usuario"})
-    }else{
-        return res.status(200).json({user})
+    if (!user) {
+        return res.status(404).json({ error: true, message: `El N° de DNI ${req.params.dniuser} no es válido` })
+    } else {
+        return res.status(200).json({ user })
     }
 
 }
 
 module.exports = {
-    createUser, getUsers,getUserByCodigo
+    createUser, getUsers, getUserByCodigo
 }

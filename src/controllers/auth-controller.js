@@ -5,7 +5,7 @@ const authSignin = async (req, res) => {
 
     const userFound = await User.findOne({ email: req.body.email }).populate("rol")
 
-    if (!userFound) return res.status(400).json({ error: true, message: "Usuario no existente" })
+    if (!userFound) return res.status(400).json({ error: true, message: `No existe una cuenta registrada con ${req.body.email}` })
 
     const validPassword = await User.comparePassword(req.body.password, userFound.password)
 
