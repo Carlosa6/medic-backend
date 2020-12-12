@@ -17,7 +17,7 @@ exports.nuevoTipoSangre = async (req, res) => {
 
 //listar todos los tipos de sangre
 exports.listarTiposSangre = async (req, res) => {
-    const listadoTipoSangre = await TipoSangre.find();
+    const listadoTipoSangre = await TipoSangre.find().sort({representation:1});
     res.status(200).json({listado: listadoTipoSangre })
 }
 

@@ -36,7 +36,7 @@ const createFichaMedica = async (req, res) => {
 };
 
 const listarFichaMedicaxUsuario = async (req, res) => {
-  const usuario = await User.findOne({ codigo: req.params.usuario }).populate('fichaMedica').populate('rol')
+  const usuario = await User.findOne({ codigo: req.params.usuario }).sort({updatedAt:-1}).populate('fichaMedica').populate('rol')
 
   if (!usuario) {
     return res.status(400).json({ error: true, message: `El código ${req.params.usuario} no existe en el sistema` });

@@ -1,13 +1,13 @@
 const Rol = require('../model/Rol');
 const User = require('../model/User')
-const jwt = require('jsonwebtoken')
+// const jwt = require('jsonwebtoken')
 
 const createUser = async (req, res) => {
-    const { codigo, nombres, apellidos, dni, email, password, direccion, telefono,sexo, rol } = req.body
+    const { codigo, nombres, apellidos, dni, email, password, direccion, telefono, sexo, rol } = req.body
     const newUser = new User({
         codigo, nombres, apellidos, dni,
         email, password: await User.encryptPassword(password),
-        direccion, telefono,sexo
+        direccion, telefono, sexo
     });
     //si al usuario se le asignó algún rol
     //se verifica con el esquema de roles
@@ -24,19 +24,18 @@ const createUser = async (req, res) => {
 
     //guardar el usuario en la bd
     const savedUser = await newUser.save();
-    console.log(savedUser)
 
-    const secret = process.env.SECRET
+    // const secret = process.env.SECRET
     //creación de token
-    const token = jwt.sign({ id: savedUser._id }, secret, {
-        expiresIn: 86400
-    })
-    //devolver el token
+    // const token = jwt.sign({ id: savedUser._id }, secret, {
+    //     expiresIn: 86400
+    // })
+    //devolver el mensaje de confirmación
     res.status(200).json({ error: false, message: 'El usuario ' + nombres + ' fue creado correctamente' })
 }
 
 const getUsers = async (req, res) => {
-    const users = await User.find();
+    const users = await User.find().sort({ apellidos: 1, nombres: 1 });
     if (users) {
         res.status(200).json({ error: false, users })
     } else {

@@ -5,14 +5,16 @@ POST {{api}}
 Content-Type: application/json
 
 {
-    "codigo":"74635102",
-    "nombres":"Andres Fernando",
-    "apellidos":"Paredes Higuain",
-    "dni":"08451009",
-    "email":"andres.paredes2@unmsm.edu.pe",
-    "password":"andres23",
+    "codigo":"31098221",
+    "nombres":"Bienestar2",
+    "apellidos":"Zieme",
+    "dni":"09819971",
+    "email":"bienestaredu2@unmsm.edu.pe",
+    "password":"edubienestar2",
     "direccion":"25732 Bartell Creek",
-    "telefono":"907584923"
+    "telefono":"907936523",
+    "sexo":"FEMENINO",
+    "rol":"admin"
 }
 
 ### LISTAR USUARIOS
