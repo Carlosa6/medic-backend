@@ -3,11 +3,11 @@ const User = require('../model/User')
 const jwt = require('jsonwebtoken')
 
 const createUser = async (req, res) => {
-    const { codigo, nombres, apellidos, dni, email, password, direccion, telefono, rol } = req.body
+    const { codigo, nombres, apellidos, dni, email, password, direccion, telefono,sexo, rol } = req.body
     const newUser = new User({
         codigo, nombres, apellidos, dni,
         email, password: await User.encryptPassword(password),
-        direccion, telefono
+        direccion, telefono,sexo
     });
     //si al usuario se le asignó algún rol
     //se verifica con el esquema de roles

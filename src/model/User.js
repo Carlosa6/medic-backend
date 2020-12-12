@@ -28,6 +28,7 @@ const userSchema = new Schema({
     },
     direccion: String,
     telefono: String,
+    sexo:String,
     foto: String,
     rol: [{
         ref: "Rol",
