@@ -58,7 +58,19 @@ Content-Type: application/json
     "telefono":"909984321"
 }
 
-### ESTADÍSTICAS
 
+### crear una ficha médica
+POST http://localhost:4000/api/medic/
+Content-Type: application/json
 
-GET http://localhost:4000/api/charts/tipo-de-sangre
+{
+    "diagnostico":["Diabetes"],
+    "tipoSangre":"Opositivo",
+    "seguroMedico":{
+        "UNMSM":true,
+        "MINSA":false,
+        "ESSALUD":false
+    },
+    "anio":"2023",
+    "email":"bienestaredu2@unmsm.edu.pe"
+}

@@ -21,13 +21,16 @@ const createFichaMedica = async (req, res) => {
     anio
   });
 
-  const idTipoSangre = await TipoSangre.findOne({representation:tipoSangre})
+  const idTipoSangre = await TipoSangre.findOne({tipo:tipoSangre})
 
   if(!idTipoSangre) return res.status(400).json({message:"El tipo de sangre seleccionado no es válido"})
 
   newFM.tipoSangre = idTipoSangre._id
 
   const fm = await newFM.save()
+
+  if(!email) return res.status(400).json({message:"Fallo al encontrar el correo electrónico del usuario"})
+
   const usuario = await User.findOne({ email })
   usuario.fichaMedica.push(fm._id)
   const savedUsuario = await usuario.save()
