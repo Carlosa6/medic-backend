@@ -1,6 +1,5 @@
 const {Router} = require('express')
 const medicCtrl = require('../controllers/medica-controller')
-const validacion = require('../config/verificacion')
 const {body} = require('express-validator')
 const auth = require('../helpers/autenticacion')
 
@@ -8,7 +7,6 @@ const router = Router()
 
 //crear ficha médica => /api/medic. Sólo el admin puede crear ficha médica
 router.post('/',[
-    validacion.validacionTipoSangre,
     body('anio').isNumeric()
 ] ,[
     auth.verificarToken,

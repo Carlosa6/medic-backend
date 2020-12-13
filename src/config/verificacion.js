@@ -32,15 +32,6 @@ const verificarRol = (req, res, next) => {
     next();
 }
 
-const validacionTipoSangre = (req, res, next) => {
-    if (req.body.tipoSangre) {
-        if (!TIPO_SANGRE.includes(req.body.tipoSangre)) {
-            return res.status(400).json({ error: true, message: `El tipo de sangre ${req.body.tipoSangre} no es válido` })
-        }
-    }
-    next();
-}
-
 module.exports = {
-    checkDuplicado, verificarRol,validacionTipoSangre
+    checkDuplicado, verificarRol
 }
