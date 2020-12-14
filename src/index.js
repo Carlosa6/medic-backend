@@ -10,6 +10,8 @@ const authRoutes = require('./routes/auth-routes')
 const fichaMedicaRouter = require('./routes/medica-routes')
 const tipoSangreRouter = require('./routes/tipo-sangre-routes')
 const estadisticasRouter = require('./routes/dashboard-routes')
+const rolRoutes = require('./routes/rol-routes')
+const discapacidadRoutes = require('./routes/discapacidad-routes')
 
 //db
 require('./database')
@@ -41,5 +43,8 @@ app.use('/api/auth', cors(corOptions), authRoutes)
 app.use('/api/medic', cors(corOptions), fichaMedicaRouter)
 app.use('/api/tipo-sangre', cors(corOptions), tipoSangreRouter)
 app.use('/api/charts',cors(corOptions), estadisticasRouter)
+
+app.use('/api/rol', cors(corOptions), rolRoutes)
+app.use('/api/discapacidad', cors(corOptions), discapacidadRoutes)
 
 app.listen(port, () => console.log('Server on port', port))

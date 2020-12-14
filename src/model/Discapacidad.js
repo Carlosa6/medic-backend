@@ -1,10 +1,9 @@
 const { Schema, model, version } = require('mongoose')
 
-const rolSchema = new Schema({
+const discapacidadSchema = new Schema({
     name:String,
-    description:String
 },{
     versionKey:false
 })
 
-module.exports = model('Rol',rolSchema)
+module.exports = model('Discapacidad',discapacidadSchema)
