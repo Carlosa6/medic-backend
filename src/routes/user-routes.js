@@ -15,7 +15,7 @@ router.post('/', [
     body('password').not().isEmpty().isLength({ min: 6 }),
     body('direccion').trim().escape(),
     body('telefono').isLength({ max: 9 })
-], [config.checkDuplicado, config.verificarRol],[
+], [config.checkDuplicado],[
     auth.verificarToken,
     auth.isAdmin
 ], userCtrl.createUser)
