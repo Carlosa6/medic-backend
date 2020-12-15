@@ -17,7 +17,7 @@ router.get('/',[
 //mostrar info de un tipo de sangre por id => GET /api/tipo-sangre/elidsddsdef
 router.get('/:id',[
     auth.verificarToken,
-    auth.isAdmin
+    //auth.isAdmin
 ], tipoSangreCtrl.listarTipoSangrePorId)
 
 //actualizar la info de un tipo de sangre por id => PUT /api/tipo-sangre/elids9dsdf
