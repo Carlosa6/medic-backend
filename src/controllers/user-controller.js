@@ -18,7 +18,7 @@ const createUser = async (req, res) => {
     } else {
         //si no se le asigna un rol
         //asignar el rol de "user"
-        const role = await Rol.findOne({ name: "user" }) //buscar la info del rol "user"
+        const role = await Rol.findOne({ name: "USUARIO" }) //buscar la info del rol "user"
         newUser.rol = role._id //GUARDAR EL ID
     }
 
