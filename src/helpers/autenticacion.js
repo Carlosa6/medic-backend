@@ -28,7 +28,7 @@ const isAdmin = async (req, res, next) => {
     const user = await User.findById(req.userID)
     const rol = await Rol.findById(user.rol)
 
-    if (rol.name === "admin") {
+    if (rol.name === "ADMIN") {
         next();
         return;
     }
