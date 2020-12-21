@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESTADÍSTICAS SEGÚN SEGURO MÉDICO</title>
+</head>
+<body>
+    
+    <h1>Cantidad de Usuarios según su tipo de Seguro Médico y Año</h1>
+    <div id="chart"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/1.33.1/plotly.min.js" integrity="sha512-V0j9LhrK9IMNdFYZqh+IqU4cjo7wdxyHNyH+L0td4HryBuZ7Oq6QxP2/CWr6TituX31+gv5PnolvERuTbz8UNA==" crossorigin="anonymous"></script>
+
+    <script>
+        const content = document.getElementById('chart')
+        const seguros = JSON.parse('<%- seguros %>')
+        let unmsm =JSON.parse('<%- unmsm %>')
+        let minsa =JSON.parse('<%- minsa %>')
+        let essalud =JSON.parse('<%- essalud %>')
+        const anios = JSON.parse('<%- anios %>')
+
+        const unmsmGDP = {
+            x:["2017","2018","2019","2020"],
+            y:unmsm,
+            type:'bar',
+            name:'Seguro Médico UNMSM'
+        }
+
+        const essaludGDP = {
+            x:["2017","2018","2019","2020"],
+            y:essalud,
+            type:'bar',
+            name:'Seguro Médico ESSALUD'
+        }
+
+        const minsaGDP = {
+            x:["2017","2018","2019","2020"],
+            y:minsa,
+            type:'bar',
+            name:'Seguro Médico MINSA'
+        }
+
+        const data = [unmsmGDP,minsaGDP,essaludGDP]
+
+        const layout = {
+            title:"Usuarios según el Seguro Médico y Año",
+            barmode:'group'
+        }
+
+        Plotly.plot(content,data,layout)
+
+    </script>
+
+</body>
+</html>
+
