@@ -7,4 +7,7 @@ router.get('/tipo-de-sangre', chartsCtrl.chartTipoSangre)
 //api/charts/seguro-medico
 router.get('/seguro-medico', chartsCtrl.seguroMedico)
 
+// /api/charts/prueba
+router.get('/prueba', chartsCtrl.probando)
+
 module.exports = router

@@ -78,3 +78,7 @@ Content-Type: application/json
 ###charts seguro medico
 ### UNMSM
 GET http://localhost:4000/api/charts/seguro-medico
+
+###
+GET http://localhost:4000/api/charts/prueba
+

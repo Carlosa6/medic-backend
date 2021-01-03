@@ -92,3 +92,58 @@ exports.seguroMedico = async (req, res) => {
         essalud: JSON.stringify([essalud.essalud2017, essalud.essalud2018, essalud.essalud2019, essalud.essalud2020]),
     })
 }
+
+exports.probando = async (req,res) => {
+    //cantidad de fichas médicas por año
+    let docs = await FichaMedica.aggregate([
+        {
+            $group:{
+                _id:'$anio',
+                count:{$sum:1}
+            }
+        }
+    ])
+
+    //devuelve la cantidad de usuarios por tipo de sangre, dado un año
+    async function tipoSangrexAnio(anio){
+        let tiposangre = await FichaMedica.aggregate([
+            {
+                $match:{
+                    anio:anio
+                }
+            },
+            {   $group:{
+                    _id:'$tipoSangre',
+                    count:{$sum:1}
+                }
+            }
+        ])
+        return tiposangre.length
+    }
+    
+
+    const tipodesangre = await tipoSangrexAnio(2019)
+
+    //usuarios por seguro médico, dado el año
+    async function seguroMedicoxAnio(anio){
+        let jiji = await FichaMedica.aggregate([
+            {
+                $match:{
+                    anio:2019
+                }
+            },
+            {
+                $group:{
+                    _id:'$seguroMedico'
+                }
+            }
+        ])
+        return jiji
+    }
+    
+    const seguromedico = await seguroMedicoxAnio(2019)
+    console.log(seguromedico)
+
+    
+    
+}
