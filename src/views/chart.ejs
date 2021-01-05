@@ -4,64 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chart.js Estadísticas Medic</title>
-    <style>
-        body{
-            padding:0;
-            margin:0;
-        }
-        h1{
-            text-align: center;
-            font-size: 30px;
-            margin:20px auto;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/style.css">
+    
 </head>
 <body>
 
-    <h1>Cantidad de Usuarios según el Tipo de Sangre, en cada año</h1>
-    <div id="chart"></div>
+    <h1>Estadísticas</h1>
+    <div class="charts">
+        <div class="chartsito">
+            <h3>Cantidad de Fichas Médicas por año</h3>
+            <div id="chart1"></div>
+        </div>
+        <div class="chartsito">
+            <h3>Cantidad de Usuarios según el Tipo de Sangre</h3>
+            <div id="chart2"></div>
+        </div>
+        <div class="chartsito">
+            <h3>Cantidad de Usuarios según el Seguro Médico</h3>
+            <div id="chart3"></div>
+        </div>
+        <div class="chartsito">
+            <h3>Cantidad de Usuarios discapacitados</h3>
+            <div id="chart4"></div>
+        </div>
+    </div>
 
-    <!-- CDN PLOTLY -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/1.33.1/plotly.min.js" integrity="sha512-V0j9LhrK9IMNdFYZqh+IqU4cjo7wdxyHNyH+L0td4HryBuZ7Oq6QxP2/CWr6TituX31+gv5PnolvERuTbz8UNA==" crossorigin="anonymous"></script>
+   <!-- CDN PLOTLY -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/1.33.1/plotly.min.js" integrity="sha512-V0j9LhrK9IMNdFYZqh+IqU4cjo7wdxyHNyH+L0td4HryBuZ7Oq6QxP2/CWr6TituX31+gv5PnolvERuTbz8UNA==" crossorigin="anonymous"></script>
 
-    <script>
-        const chart = document.getElementById('chart')
-        const tipoSangre = JSON.parse('<%- labels %>')
-        let amas = JSON.parse('<%- amas %>')
-        let amenos = JSON.parse('<%- amenos %>')
-        let omas = JSON.parse('<%- omas %>')
+   <script>
+       let aniosFichaMedica = JSON.parse('<%- aniosFichaMedica %>')
+       let cantidadesFichaMedica = JSON.parse('<%- cantidadesFichaMedica %>')
+   </script>
 
-        const amasGDP = {
-            x:tipoSangre,
-            y:amas,
-            type:'bar',
-            name:"Usuarios Tipo de Sangre A+"
-        }
-
-        const amenosGDP = {
-            x:tipoSangre,
-            y:amenos,
-            type:'bar',
-            name:"Usuarios Tipo de Sangre A-"
-        }
-
-        const omasGDP = {
-            x:tipoSangre,
-            y:omas,
-            type:'bar',
-            name:"Usuarios Tipo de Sangre O+"
-        }
-
-        const data = [amasGDP,amenosGDP,omasGDP]
-
-        const layout = {
-            title:"Usuarios según el Tipo de Sangre y Año",
-            barmode:'group'
-        }
-
-        Plotly.plot(chart,data,layout)
-
-    </script>
+  <!-- CUSTOM JS -->
+  <script src="/js/charts.js"></script>
 
 </body>
 </html>

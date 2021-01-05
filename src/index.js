@@ -25,6 +25,8 @@ const corOptions = {
 
 app.set('view engine','ejs')
 app.set('views', path.join(__dirname,'views'))
+//archivos estáticos
+app.use(express.static(path.join(__dirname,'public')))
 
 app.use(morgan('dev'))
 app.use(cors(corOptions))
@@ -36,6 +38,8 @@ app.all('/*',function(req,res,next){
     next()
 
 })
+
+
 
 //rutas
 app.use('/api/users', cors(corOptions), userRoutes)

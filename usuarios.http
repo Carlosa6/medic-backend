@@ -82,3 +82,6 @@ GET http://localhost:4000/api/charts/seguro-medico
 ###
 GET http://localhost:4000/api/charts/prueba
 
+###
+GET http://localhost:4000/api/charts
+
