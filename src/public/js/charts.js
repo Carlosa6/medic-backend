@@ -4,7 +4,10 @@ const chart1 = document.getElementById('chart1')
 let grafA = {
     x: aniosFichaMedica,
     y: cantidadesFichaMedica,
-    type: 'bar'
+    type: 'bar',
+    marker:{
+        color:'#b82e7ae8'
+    }
 }
 
 let data = [grafA]
