@@ -39,6 +39,8 @@ async function seguroMedicoxAnio(anio) {
 
 exports.charts = async (req, res) => {
 
+    let arrayEnviar = []
+
     //cantidad de fichas médicas por año
     let cantidadFichasxAnio = await FichaMedica.aggregate([
         {
@@ -48,7 +50,7 @@ exports.charts = async (req, res) => {
             }
         }
     ])
-
+    arrayEnviar.push({cantidadFichasxAnio:cantidadFichasxAnio})
 
     let tiposDeSangre = await TipoSangre.find({}, { tipo: 0 })
     //Devuelve: [{_id:'dsd3fdfdf',representation:'A+'},{...},...] 8 documentos
@@ -62,9 +64,10 @@ exports.charts = async (req, res) => {
             representacion.push(tiposDeSangre[tiposSng].representation)
         }
     }
-    console.log(representacion)
-    console.log(tiposanio)
+    // console.log(representacion)
+    // console.log(tiposanio)
     
+    res.status(200).json(arrayEnviar)
 
 }
 
