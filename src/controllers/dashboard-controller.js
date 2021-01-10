@@ -1,5 +1,7 @@
 const FichaMedica = require('../model/FichaMedica');
 const TipoSangre = require('../model/TipoSangre');
+const User = require('../model/User')
+
 
 //devuelve la cantidad de usuarios por tipo de sangre, dado un año
 async function tipoSangrexAnio(anio) {
@@ -101,4 +103,47 @@ exports.charts = async (req, res) => {
     // res.status(200).json(arrayEnviar)
 
 }
+/****CODIFO ANGEL ****/
+//Obtener usuario con sus fichas medicas
+async function usuario_ficha() {
+    let usuarios = await User.find().select({ "fichaMedica": 1, "_id": 1})
+    let usuarios_con_ficha = []
+    usuarios.forEach(x=>{
+        if (x.fichaMedica.length>0) usuarios_con_ficha.push(x)
+    })
+    return usuarios_con_ficha
+}
 
+//Obtener usuario con una ficha para obtener datos generales
+async function usuario_una_ficha() {
+    let usuarios = await usuario_ficha()
+    let id_fichas = []
+    let ficha_medica_unica_por_usuario = []
+    usuarios.forEach(x=>{
+        let id_ficha = x.fichaMedica.pop()
+        id_fichas.push(id_ficha)
+    })
+    id_fichas.forEach(async (x)=>{
+        let ficha = await FichaMedica.findById(x).select({"tipoSangre":1})//.select({"tipoSangre":1,"seguroMedico":1})
+        if (ficha != null) {
+            console.log(ficha)
+            ficha_medica_unica_por_usuario.push(ficha)
+            //return ficha
+        }
+
+    })
+    
+    console.log(ficha_medica_unica_por_usuario)
+
+    return usuarios
+}
+
+
+exports.charts1 = async (req,res)=>{
+    
+    let usuarios = await usuario_una_ficha()
+    
+    res.status(200).json(usuarios)
+
+
+}
