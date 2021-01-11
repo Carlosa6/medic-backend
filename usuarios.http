@@ -64,14 +64,14 @@ POST http://localhost:4000/api/medic/
 Content-Type: application/json
 
 {
-    "diagnostico":["COVID-19"],
-    "tipoSangre":"Apositivo",
+    "diagnostico":["COVID-19","Difteria"],
+    "tipoSangre":"Anegativo",
     "seguroMedico":{
         "UNMSM":false,
-        "MINSA":false,
-        "ESSALUD":true
+        "MINSA":true,
+        "ESSALUD":false
     },
-    "anio":"2020",
+    "anio":"2019",
     "email":"bienestaredu2@unmsm.edu.pe"
 }
 
