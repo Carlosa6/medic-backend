@@ -10,6 +10,7 @@ const medicamentoHabitualSchema = new Schema({
 })
 
 const seguroMedicoSchema = new Schema({
+    _id:false,
     UNMSM:{
         type:Boolean
     },
