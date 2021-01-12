@@ -64,22 +64,23 @@ POST http://localhost:4000/api/medic
 Content-Type: application/json
 
 {
-    "diagnostico":["Epatitis B"],
-    "tipoSangre":"Anegativo",
+    "diagnostico":["COVID 19"],
+    "tipoSangre":"Onegativo",
     "medicamentoHabitual":[{
-        "nombre": "Fluoxetina",
-        "dosis": "6mg",
-        "cantidad": 2,
-        "periodo": "diaria" 
+        "nombre": "Dexalor",
+        "dosis": "4mg",
+        "cantidad": 3,
+        "periodo": "semanal" 
     }],
-    "medicamentosAlergicos":["Doxepina","Pipadrol"],
+    "medicamentosAlergicos":["Penicilina"],
     "seguroMedico":{
-        "UNMSM":false,
-        "MINSA":false,
-        "ESSALUD":true
+        "UNMSM":true,
+        "MINSA":true,
+        "ESSALUD":false,
+        "EPS":"Rimac"
     },
     "anio":2019,
-    "email":"jhoanmichi@unmsm.edu.pe"
+    "email":"angel01@unmsm.edu.pe"
 }
 
 ###charts seguro medico
@@ -91,4 +92,8 @@ GET http://localhost:4000/api/charts/prueba
 
 ###
 GET http://localhost:4000/api/charts
+
+### DELETE FICHA MEDICA
+DELETE http://localhost:4000/api/medic/454564545/5ffd22e336e58d0010b0bf27
+
 
