@@ -115,34 +115,101 @@ async function usuario_ficha() {
 }
 
 //Obtener usuario con una ficha para obtener datos generales
-async function usuario_una_ficha() {
+async function usuario_una_ficha(anio=0) {
     let usuarios = await usuario_ficha()
     let id_fichas = []
     let ficha_medica_unica_por_usuario = []
     usuarios.forEach(x=>{
-        let id_ficha = x.fichaMedica.pop()
+        let id_ficha = x.fichaMedica[0]
         id_fichas.push(id_ficha)
     })
-    id_fichas.forEach(async (x)=>{
-        let ficha = await FichaMedica.findById(x).select({"tipoSangre":1})//.select({"tipoSangre":1,"seguroMedico":1})
-        if (ficha != null) {
-            console.log(ficha)
-            ficha_medica_unica_por_usuario.push(ficha)
-            //return ficha
-        }
+    await Promise.all(
+        id_fichas.map(async (x)=>{
+            let ficha
+            if (anio !=0){
+                ficha = await FichaMedica.find({_id:x,anio:anio}).select({"tipoSangre":1,"seguroMedico":1})//.select({"tipoSangre":1,"seguroMedico":1})
+            }else{
+                ficha = await FichaMedica.find({_id:x}).select({"tipoSangre":1,"seguroMedico":1})//.select({"tipoSangre":1,"seguroMedico":1})
+            }
+            if (ficha[0] != undefined) {
+                ficha_medica_unica_por_usuario.push(ficha[0])
+                //return ficha
+            }
+            
+        })
+        )
+        
+    
+    return ficha_medica_unica_por_usuario
+}
 
+//Obtener cantidades por tipo de sangre
+async function estadistica_tipo_asngre() {
+    let usuarios = await usuario_una_ficha()
+
+    let tipos_sangre = await TipoSangre.find().select({"_id":1,"representation":1})
+    let sangre={}
+    tipos_sangre.forEach(x=>{
+        cantidad = 0
+        usuarios.forEach(y=>{
+            if (JSON.stringify(x._id) == JSON.stringify(y.tipoSangre)){
+                cantidad++
+            }
+        })
+        sangre[x.representation]=cantidad
     })
     
-    console.log(ficha_medica_unica_por_usuario)
+    return sangre
+}
 
-    return usuarios
+//Obtener cantidades por seguro medico del año pasado (2020)
+async function estadistica_seguro_medico() {
+    let usuarios = await usuario_una_ficha(2020)
+    let seguros_validos=[]
+    usuarios.forEach(x=>{
+
+    if (x.seguroMedico == undefined){
+        console.log(x)
+    }else{
+        seguros_validos.push(x.seguroMedico)
+    }
+
+   })
+   let estadistica = {
+       '0': 0,
+       '1': 0,
+       'Mas de 1': 0,
+   }
+
+   seguros_validos.forEach(x=>{
+    cantidad = 0
+    if (x.UNMSM) cantidad++
+    if (x.MINSA || x.ESSALUD) cantidad++
+
+    switch (cantidad) {
+        case 0:
+            estadistica['0']++
+            break;
+        case 1:
+            estadistica['1']++
+            break;
+        case 2:
+            estadistica['Mas de 1']++
+            break;
+    }
+    
+   })
+
+   console.log(estadistica)
+
+   return estadistica
 }
 
 
 exports.charts1 = async (req,res)=>{
     
-    let usuarios = await usuario_una_ficha()
-    
+    let usuarios = await estadistica_seguro_medico()
+    console.log(usuarios.length)
     res.status(200).json(usuarios)
 
 
