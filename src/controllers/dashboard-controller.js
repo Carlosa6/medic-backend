@@ -208,7 +208,7 @@ async function usuario_una_ficha(anio = 0) {
   let id_fichas = [];
   let ficha_medica_unica_por_usuario = [];
   usuarios.forEach((x) => {
-    let id_ficha = x.fichaMedica[0];
+    let id_ficha = x.fichaMedica.pop();
     id_fichas.push(id_ficha);
   });
   await Promise.all(
