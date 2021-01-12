@@ -68,9 +68,11 @@ exports.charts = async (req, res) => {
     arrayEnviar.push({ cantidadFichasxAnio: cantidadFichasxAnio })
 
     //TIPOS DE SANGRE
-    let tiposDeSangre = await TipoSangre.find({}, { tipo: 0 })
+    let tiposDeSangreBD = await TipoSangre.find({}, { tipo: 0 })
     //Devuelve: [{_id:'dsd3fdfdf',representation:'A+'},{...},...] 8 documentos
     let tiposanio = await tipoSangrexAnio(2020)
+
+    arrayEnviar.push({ collectionTiposSangre: tiposDeSangreBD })
 
     // [
     // { _id: 5fac9d0d3b441334a01a6295, count: 1 },

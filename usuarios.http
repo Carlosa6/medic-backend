@@ -60,19 +60,26 @@ Content-Type: application/json
 
 
 ### crear una ficha médica
-POST http://localhost:4000/api/medic/
+POST http://localhost:4000/api/medic
 Content-Type: application/json
 
 {
-    "diagnostico":["COVID-19","Difteria"],
+    "diagnostico":["Epatitis B"],
     "tipoSangre":"Anegativo",
+    "medicamentoHabitual":[{
+        "nombre": "Fluoxetina",
+        "dosis": "6mg",
+        "cantidad": 2,
+        "periodo": "diaria" 
+    }],
+    "medicamentosAlergicos":["Doxepina","Pipadrol"],
     "seguroMedico":{
         "UNMSM":false,
-        "MINSA":true,
-        "ESSALUD":false
+        "MINSA":false,
+        "ESSALUD":true
     },
-    "anio":"2019",
-    "email":"bienestaredu2@unmsm.edu.pe"
+    "anio":2019,
+    "email":"jhoanmichi@unmsm.edu.pe"
 }
 
 ###charts seguro medico
