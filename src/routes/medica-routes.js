@@ -31,8 +31,8 @@ router.put('/:id',[
 
 //eliminar ficha medica por id => DELETE /api/medic/:usuario/:id
 router.delete('/:usuario/:id',[
-    // auth.verificarToken,
-    // auth.isAdmin
+    auth.verificarToken,
+    auth.isAdmin
 ], medicCtrl.deleteFichaMedica)
 
 
