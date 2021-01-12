@@ -92,7 +92,7 @@ exports.charts = async (req, res) => {
     //         })
     //     })
     // })
-
+/*
     for (let tiposSng in tiposDeSangre) {
         let currentId = tiposDeSangre[tiposSng]._id
         if (tiposanio.some(obj => JSON.stringify(obj._id) === JSON.stringify(currentId))) {
@@ -101,7 +101,7 @@ exports.charts = async (req, res) => {
             })
         }
     }
-
+*/
     // tiposanio.forEach(g => {
     //     let cant = g.count
     //     representacion.some(obj => {
