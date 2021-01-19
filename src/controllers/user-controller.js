@@ -44,8 +44,8 @@ const getUsers = async (req, res) => {
 }
 
 const getUserByCodigo = async (req, res) => {
-    const user = await User.findOne({ dni: req.params.dniuser }).populate('rol').populate('fichaMedica')
-
+    const user = await (await User.findOne({ dni: req.params.dniuser }).populate('rol').populate('fichaMedica').populate('incidencia'))
+    console.log(user)
     if (!user) {
         return res.status(404).json({ error: true, message: `El N° de DNI ${req.params.dniuser} no es válido` })
     } else {

@@ -37,6 +37,10 @@ const userSchema = new Schema({
     fichaMedica:[{
         ref: "FichaMedica",
         type: Schema.Types.ObjectId
+    }],
+    incidencia:[{
+        ref: "Incidencia",
+        type: Schema.Types.ObjectId
     }]
 }, {
     timestamps: true

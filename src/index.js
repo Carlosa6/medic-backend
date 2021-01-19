@@ -12,6 +12,7 @@ const tipoSangreRouter = require('./routes/tipo-sangre-routes')
 const estadisticasRouter = require('./routes/dashboard-routes')
 const rolRoutes = require('./routes/rol-routes')
 const discapacidadRoutes = require('./routes/discapacidad-routes')
+const incidenciaRoutes = require('./routes/incidencia-routes')
 
 //db
 require('./database')
@@ -50,5 +51,6 @@ app.use('/api/charts',cors(corOptions), estadisticasRouter)
 
 app.use('/api/rol', cors(corOptions), rolRoutes)
 app.use('/api/discapacidad', cors(corOptions), discapacidadRoutes)
+app.use('/api/incidencia', cors(corOptions), incidenciaRoutes)
 
 app.listen(port, () => console.log('Server on port', port))
