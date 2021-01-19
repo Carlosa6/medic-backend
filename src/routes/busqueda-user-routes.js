@@ -3,20 +3,24 @@ const auth = require('../helpers/autenticacion')
 const Busqueda = require('../model/Busqueda')
 
 
-router.get('/',[
-    auth.verificarToken,auth.isAdmin
-], async (req,res) => {
+router.get('/', [
+    auth.verificarToken, auth.isAdmin
+], async (req, res) => {
     const usuariosReales = await Busqueda.find()
     res.status(200).json(usuariosReales)
 })
-router.get('/:dni',[
-    auth.verificarToken,auth.isAdmin
-], async (req,res) => {
-    const userByDni = await Busqueda.findOne({dni:req.params.dni})
 
-    if(!userByDni) return res.status(400).json({message:"El Usuario no existe"})
 
-    res.status(200).json(userByDni)
+router.get('/:campo/:valor', [
+    auth.verificarToken, auth.isAdmin
+], async (req, res) => {
+    const { campo, valor } = req.params
+
+    const userByCampo = await Busqueda.findOne({ [campo]: valor })
+
+    if (!userByCampo) return res.status(400).json({ message: "El Usuario no existe" })
+
+    res.status(200).json(userByCampo)
 })
 
 module.exports = router

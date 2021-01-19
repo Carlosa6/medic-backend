@@ -102,6 +102,25 @@ DELETE http://localhost:4000/api/medic/454564545/5ffd22e336e58d0010b0bf27
 ### todos
 GET {{busca}}
 
-### busca por dni
-GET {{busca}}/73861350
+
+######
+GET {{busca}}/dni/73861350
+
+###### incidencias
+@inci = http://localhost:4000/api/incidencia
+
+#### crear incidencia
+POST {{inci}}
+Content-Type: application/json
+
+{
+    "titulo":"National Division Architect",
+    "descripcion":"Aut culpa optio optio voluptates blanditiis eos dolor voluptatem perferendis. Voluptatem vitae at omnis repellat fugiat earum a ipsum. Mollitia accusantium quos eum nesciunt doloremque.",
+    "fecha":"2020-05-10",
+    "accion":"Libero qui et voluptas commodi illum.",
+    "email":"bienestar01@unmsm.edu.pe"
+}
+
+###busca rincidencia por id
+GET {{inci}}/60075aaf74a2f300104bf9d0
 
