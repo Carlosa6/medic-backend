@@ -13,6 +13,7 @@ const estadisticasRouter = require('./routes/dashboard-routes')
 const rolRoutes = require('./routes/rol-routes')
 const discapacidadRoutes = require('./routes/discapacidad-routes')
 const incidenciaRoutes = require('./routes/incidencia-routes')
+const buscandoUsuariosRoutes = require('./routes/busqueda-user-routes')
 
 //db
 require('./database')
@@ -24,16 +25,16 @@ const corOptions = {
     optionsSuccessStatus: 200
 }
 
-app.set('view engine','ejs')
-app.set('views', path.join(__dirname,'views'))
+app.set('view engine', 'ejs')
+app.set('views', path.join(__dirname, 'views'))
 //archivos estáticos
-app.use(express.static(path.join(__dirname,'public')))
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(morgan('dev'))
 app.use(cors(corOptions))
 app.use(express.json())
 
-app.all('/*',function(req,res,next){
+app.all('/*', function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Cache-Control");
     next()
@@ -47,10 +48,11 @@ app.use('/api/users', cors(corOptions), userRoutes)
 app.use('/api/auth', cors(corOptions), authRoutes)
 app.use('/api/medic', cors(corOptions), fichaMedicaRouter)
 app.use('/api/tipo-sangre', cors(corOptions), tipoSangreRouter)
-app.use('/api/charts',cors(corOptions), estadisticasRouter)
+app.use('/api/charts', cors(corOptions), estadisticasRouter)
 
 app.use('/api/rol', cors(corOptions), rolRoutes)
 app.use('/api/discapacidad', cors(corOptions), discapacidadRoutes)
 app.use('/api/incidencia', cors(corOptions), incidenciaRoutes)
+app.use('/busqueda-usuarios', cors(corOptions), buscandoUsuariosRoutes)
 
 app.listen(port, () => console.log('Server on port', port))

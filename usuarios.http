@@ -96,4 +96,12 @@ GET http://localhost:4000/api/charts
 ### DELETE FICHA MEDICA
 DELETE http://localhost:4000/api/medic/454564545/5ffd22e336e58d0010b0bf27
 
+#######
+@busca = http://localhost:4000/busqueda-usuarios
+
+### todos
+GET {{busca}}
+
+### busca por dni
+GET {{busca}}/73861350
 
