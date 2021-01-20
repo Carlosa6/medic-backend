@@ -12,4 +12,6 @@ router.get('/:id', [
     auth.verificarToken, auth.isAdmin
 ], incidencaiCtrl.mostrarIncidenciaxId)
 
+router.get('/user/:codigo',incidencaiCtrl.incidenciasxUsuario)
+
 module.exports = router

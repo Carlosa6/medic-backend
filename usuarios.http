@@ -127,3 +127,8 @@ Content-Type: application/json
 ###busca rincidencia por id
 GET {{inci}}/60075aaf74a2f300104bf9d0
 
+###incidencias por codigo de usuario
+
+GET {{inci}}/user/45645646
+
+

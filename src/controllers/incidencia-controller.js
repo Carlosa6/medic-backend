@@ -51,7 +51,21 @@ const mostrarIncidenciaxId = async (req, res) => {
   }
 };
 
+const incidenciasxUsuario = async (req,res) => {
+  if(!req.params.codigo) return res.status(400).json({message:"Debe proporcionar el Código del usuario"})
+
+  const incidenciasUser = await User.findOne({codigo: req.params.codigo}).populate('incidencia')
+
+  if(!incidenciasUser){
+    return res.status(400).json({message:`El Código ${req.params.codigo} no está registrado. Ingrese otro por favor`})
+  }else{
+    return res.status(200).json(incidenciasUser)
+  }
+
+}
+
 module.exports={
     createIncidencia,
-    mostrarIncidenciaxId
+    mostrarIncidenciaxId,
+    incidenciasxUsuario
 }
