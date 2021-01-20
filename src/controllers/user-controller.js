@@ -35,7 +35,7 @@ const createUser = async (req, res) => {
 }
 
 const getUsers = async (req, res) => {
-    const users = await User.find().sort({ apellidos: 1, nombres: 1 });
+    const users = await User.find().sort({ apellidos: 1, nombres: 1 }).populate('rol').populate('fichaMedica').populate("incidencia")
     if (users) {
         res.status(200).json({ error: false, users })
     } else {

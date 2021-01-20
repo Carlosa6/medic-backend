@@ -18,6 +18,9 @@ Content-Type: application/json
 }
 
 ### LISTAR USUARIOS
+GET http://localhost:4000/api/users
+
+####
 
 GET https://nameless-plains-49486.herokuapp.com/api/users
 access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmZDE3MzQwNjU2ODgyMDAxMDM3MDMyNCIsImlhdCI6MTYwNzc0OTM5OSwiZXhwIjoxNjA3ODM1Nzk5fQ.qzCkT5bYPaiKe0VvoX_7d36Rczk5Sm8c4hwB4eJO5nU
@@ -114,11 +117,11 @@ POST {{inci}}
 Content-Type: application/json
 
 {
-    "titulo":"National Division Architect",
+    "titulo":"Lorem ipsum dolor",
     "descripcion":"Aut culpa optio optio voluptates blanditiis eos dolor voluptatem perferendis. Voluptatem vitae at omnis repellat fugiat earum a ipsum. Mollitia accusantium quos eum nesciunt doloremque.",
-    "fecha":"2020-05-10",
+    "fecha":"2020-11-12",
     "accion":"Libero qui et voluptas commodi illum.",
-    "email":"bienestar01@unmsm.edu.pe"
+    "email":"evisoncy@unmsm.edu.pe"
 }
 
 ###busca rincidencia por id

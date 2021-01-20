@@ -22,8 +22,8 @@ router.post('/', [
 
 //listar usuarios => GET /api/users. Sólo el admin puede visualizar los datos de los usuarios
 router.get('/',[
-    auth.verificarToken,
-    auth.isAdmin
+    // auth.verificarToken,
+    // auth.isAdmin
 ], userCtrl.getUsers)
 
 //listar info de un usuario por dni. Usuario logueado
