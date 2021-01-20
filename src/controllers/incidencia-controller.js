@@ -59,7 +59,7 @@ const incidenciasxUsuario = async (req,res) => {
   if(!incidenciasUser){
     return res.status(400).json({message:`El Código ${req.params.codigo} no está registrado. Ingrese otro por favor`})
   }else{
-    return res.status(200).json(incidenciasUser)
+    return res.status(200).json({incidencias:incidenciasUser})
   }
 
 }
