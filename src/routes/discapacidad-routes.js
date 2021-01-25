@@ -9,7 +9,11 @@ router.get(
   discapacidadCtrl.getDiscapacidades
 );
 
-router.post("/", [auth.verificarToken, auth.isAdmin], discapacidadCtrl.postDiscapacidad);
+router.post(
+  "/",
+  [auth.verificarToken, auth.isAdmin],
+  discapacidadCtrl.postDiscapacidad
+);
 
 router.get(
   "/:id",

@@ -28,20 +28,24 @@ const userSchema = new Schema({
     },
     direccion: String,
     telefono: String,
-    sexo:String,
+    sexo: String,
     foto: String,
     rol: [{
         ref: "Rol",
         type: Schema.Types.ObjectId
     }],
-    fichaMedica:[{
+    fichaMedica: [{
         ref: "FichaMedica",
         type: Schema.Types.ObjectId
     }],
-    incidencia:[{
+    incidencia: [{
         ref: "Incidencia",
         type: Schema.Types.ObjectId
-    }]
+    }],
+    discapacidad: {
+        ref: "Discapacidad",
+        type: Schema.Types.ObjectId
+    }
 }, {
     timestamps: true
 })

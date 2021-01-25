@@ -51,15 +51,19 @@ POST http://localhost:4000/api/users
 Content-Type: application/json
 
 {
-    "email":"unidad.d3ds3434fd@unmsm.edu.pe",
-    "password":"bienestaru",
-    "nombres":"fdfgv",
-    "apellidos":"Malazquez",
-    "codigo":"13489093",
-    "dni":"78700932",
-    "direccion":"dsdds",
-    "telefono":"909984321"
+    "email":"Abbie.Upton55@yahoo.com",
+    "password":"Metrics962cv",
+    "nombres":"Ward Ned",
+    "apellidos":"D'Amore Stehr",
+    "codigo":"18200148",
+    "dni":"08372934",
+    "direccion":"815 Nikolas Course",
+    "telefono":"983094510",
+    "discapacidad":"Motora"
 }
+
+#### usuario por dni
+GET http://localhost:4000/api/users/08372934
 
 
 ### crear una ficha médica
@@ -130,5 +134,8 @@ GET {{inci}}/60075aaf74a2f300104bf9d0
 ###incidencias por codigo de usuario
 
 GET {{inci}}/user/45645646
+
+### discapacitados
+GET http://localhost:4000/api/discapacidad
 
 

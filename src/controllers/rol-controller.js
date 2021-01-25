@@ -11,12 +11,12 @@ const getRols = async (req, res) => {
   }
 };
 
-const postRol = async (req,res)=>{
+const postRol = async (req, res) => {
 
-  const {name,description} = req.body
+  const { name, description } = req.body
 
   const newRol = new Rol({
-    name,description
+    name, description
   })
 
   const savedRol = await newRol.save();
@@ -25,34 +25,34 @@ const postRol = async (req,res)=>{
 
 }
 
-const updateRol = async(req,res)=>{
+const updateRol = async (req, res) => {
 
   const id = req.params.id
-  const {name,description}=req.body
+  const { name, description } = req.body
 
-  const foundRol = await Rol.findOne({_id:id})
+  const foundRol = await Rol.findOne({ _id: id })
 
-  foundRol.name=name
-  foundRol.description=description
+  foundRol.name = name
+  foundRol.description = description
 
   const saveRol = await foundRol.save();
-  
+
   res.status(200).json({ error: false, message: 'El rol  fue actualizado correctamente' })
 
 }
 
-const deleteRol = async(req,res)=>{
+const deleteRol = async (req, res) => {
 
   const id = req.params.id
 
-  await Rol.deleteOne({_id:id})
+  await Rol.deleteOne({ _id: id })
   res.status(200).json({ error: false, message: 'El rol  fue eliminado correctamente' })
 
 }
 
 const getRolById = async (req, res) => {
   const id = req.params.id
-  const foundRol = await Rol.findOne({_id:id})
+  const foundRol = await Rol.findOne({ _id: id })
   if (foundRol) {
     res.status(200).json({ error: false, foundRol });
   } else {
@@ -63,5 +63,5 @@ const getRolById = async (req, res) => {
 };
 
 module.exports = {
-  getRols,postRol,updateRol,deleteRol,getRolById
+  getRols, postRol, updateRol, deleteRol, getRolById
 };

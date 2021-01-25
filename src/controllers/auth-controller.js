@@ -12,11 +12,11 @@ const authSignin = async (req, res) => {
     if (!validPassword) return res.status(401).json({ error: true, message: "La contraseña es incorrecta" })
 
     const secret = process.env.SECRET
-    const token = jwt.sign({id:userFound._id}, secret,{
-        expiresIn:86400
+    const token = jwt.sign({ id: userFound._id }, secret, {
+        expiresIn: 86400
     })
 
-    res.json({userFound,token})
+    res.json({ userFound, token })
 
 }
 

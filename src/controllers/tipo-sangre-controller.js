@@ -17,20 +17,20 @@ exports.nuevoTipoSangre = async (req, res) => {
 
 //listar todos los tipos de sangre
 exports.listarTiposSangre = async (req, res) => {
-    const listadoTipoSangre = await TipoSangre.find().sort({representation:1});
-    res.status(200).json({listado: listadoTipoSangre })
+    const listadoTipoSangre = await TipoSangre.find().sort({ representation: 1 });
+    res.status(200).json({ listado: listadoTipoSangre })
 }
 
 //mostrar info de un tipo de sangre por id
 exports.listarTipoSangrePorId = async (req, res) => {
     const buscarPorId = await TipoSangre.findById(req.params.id)
-    res.status(200).json({tipo: buscarPorId })
+    res.status(200).json({ tipo: buscarPorId })
 }
 
 //actualizar la info de un tipo de sangre por id
 exports.actualizarTipoSangrePorId = async (req, res) => {
-    const actualizarTipoSangre = await TipoSangre.findByIdAndUpdate(req.params.id,req.body,{
-        new:true
+    const actualizarTipoSangre = await TipoSangre.findByIdAndUpdate(req.params.id, req.body, {
+        new: true
     })
     res.status(200).json(actualizarTipoSangre)
 }
@@ -38,5 +38,5 @@ exports.actualizarTipoSangrePorId = async (req, res) => {
 //eliminar un tipo de sangre por id
 exports.eliminarTipoSangre = async (req, res) => {
     await TipoSangre.findByIdAndDelete(req.params.id)
-    res.status(204).json({message:"El Tipo de Sangre fue eliminado correctamente"})
+    res.status(204).json({ message: "El Tipo de Sangre fue eliminado correctamente" })
 }
