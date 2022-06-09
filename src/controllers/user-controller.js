@@ -33,11 +33,19 @@ const createUser = async (req, res) => {
   //para obtener su id y guardarlos en el esquema de usuarios
   if (rol) {
     const foundRol = await Rol.findOne({ name: rol });
-    newUser.rol = foundRol._id;
+    if(foundRol && foundRol._id){
+      newUser.rol = foundRol._id;
+    }else{
+      return res.status(400).json({
+        error: true,
+        message: "El rol registrado no es válido",
+      });
+    }
+    
   } else {
     //si no se le asigna un rol
     //asignar el rol de "user"
-    const role = await Rol.findOne({ name: "USUARIO" }); //buscar la info del rol "user"
+    const role = await Rol.findOne({ name: "user" }); //buscar la info del rol "user"
     newUser.rol = role._id; //GUARDAR EL ID
   }
 

@@ -16,8 +16,8 @@ router.post('/', [
     body('direccion').trim().escape(),
     body('telefono').isLength({ max: 9 })
 ], [config.checkDuplicado],[
-    auth.verificarToken,
-    auth.isAdmin
+    // auth.verificarToken,
+    // auth.isAdmin
 ], userCtrl.createUser)
 
 //listar usuarios => GET /api/users. Sólo el admin puede visualizar los datos de los usuarios

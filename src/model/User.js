@@ -30,10 +30,10 @@ const userSchema = new Schema({
     telefono: String,
     sexo: String,
     foto: String,
-    rol: [{
+    rol: {
         ref: "Rol",
         type: Schema.Types.ObjectId
-    }],
+    },
     fichaMedica: [{
         ref: "FichaMedica",
         type: Schema.Types.ObjectId

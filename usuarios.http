@@ -1,20 +1,43 @@
 @api = http://localhost:4000/api/users
 
+######## CREAR ROLES: user y admin
+POST http://localhost:4000/api/rol
+Content-Type: application/json
+
+{
+    "name":"admin",
+    "description":"Acceso a todo el sistema"
+}
+
+##### OBTENER LISTADO DE ROLES
+GET http://localhost:4000/api/rol
+
+# {
+#       "_id": "62a25dae8825d24f1c35ef47",
+#       "name": "admin",
+#       "description": "Acceso a todo el sistema"
+#     },
+#     {
+#       "_id": "62a25d918825d24f1c35ef46",
+#       "name": "user",
+#       "description": "Acceso de lectura de información"
+#     }
+
+
 ### CREAR USUARIO
 POST {{api}}
 Content-Type: application/json
 
 {
-    "codigo":"31098221",
-    "nombres":"Bienestar2",
-    "apellidos":"Zieme",
-    "dni":"09819971",
-    "email":"bienestaredu2@unmsm.edu.pe",
-    "password":"edubienestar2",
+    "codigo":"78903567",
+    "nombres":"Agustin",
+    "apellidos":"Zizou",
+    "dni":"59049345",
+    "email":"eljd9jdjsdf@unmsm.edu.pe",
+    "password":"fdfrgfghg",
     "direccion":"25732 Bartell Creek",
-    "telefono":"907936523",
-    "sexo":"FEMENINO",
-    "rol":"admin"
+    "telefono":"907786523",
+    "sexo":"MASCULINO"
 }
 
 ### LISTAR USUARIOS

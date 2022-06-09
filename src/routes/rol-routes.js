@@ -5,8 +5,8 @@ const {body} = require('express-validator')
 const router = Router()
 
 router.get('/',[
-    auth.verificarToken,
-    auth.isAdmin
+    // auth.verificarToken,
+    // auth.isAdmin
 ], rolCtrl.getRols)
 
 router.post('/',[
